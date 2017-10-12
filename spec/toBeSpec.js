@@ -1,4 +1,4 @@
-describe('toBe Spec Examples', () => {
+describe('toBe examples', () => {
 
     it('Should validate toBe', () => {
         const objOne = { value: true };
