@@ -1,0 +1,1 @@
+# jasmine-node [![Build Status](https://travis-ci.org/luizbaldi/javascript-tdd.svg?branch=master)](https://travis-ci.org/luizbaldi/javascript-tdd)
