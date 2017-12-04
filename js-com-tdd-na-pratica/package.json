@@ -1,0 +1,25 @@
+{
+  "name": "js-com-tdd-na-pratica",
+  "version": "0.1.0",
+  "description": "Exercises from JS com TDD na pratica course",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --colors --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizbaldi/javascript-tdd.git"
+  },
+  "author": "Luiz Baldi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizbaldi/javascript-tdd/issues"
+  },
+  "homepage": "https://github.com/luizbaldi/javascript-tdd#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "webpack": "^3.9.1"
+  }
+}
