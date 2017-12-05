@@ -2,10 +2,10 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    filename: './app.js'
+    filename: './src/main.js'
   },
   output: {
-    filename: './build.js'
+    filename: './dist/build.js'
   },
   module: {
     loaders: [
