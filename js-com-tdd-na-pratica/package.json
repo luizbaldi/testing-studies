@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --colors --progress",
-    "test": "mocha test/**/*.spec.js",
-    "test:tdd": "mocha test/**/*.spec.js --watch"
+    "test": "mocha test/**/*.spec.js --require babel-register",
+    "test:tdd": "mocha test/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "reporter": ["text", "html"],
+    "exclude": ["tests/**"]
   },
   "repository": {
     "type": "git",
@@ -25,7 +30,10 @@
     "webpack": "^3.9.1"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
   }
 }
