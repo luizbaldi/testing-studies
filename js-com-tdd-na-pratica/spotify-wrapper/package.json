@@ -1,7 +1,7 @@
 {
-  "name": "js-tdd-course",
+  "name": "spotify-wrapper",
   "version": "1.0.0",
-  "description": "Nossa biblioteca do curso de JS com TDD na prática.",
+  "description": "Simple wrapper to work with Spotify Web API.",
   "main": "index.js",
   "scripts": {
     "clear": "rimraf lib",
@@ -47,7 +47,11 @@
     "eslint-plugin-import": "^2.6.1",
     "husky": "^0.11.9",
     "mocha": "^3.2.0",
+    "node-fetch": "^1.7.3",
     "nyc": "^10.2.0",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.14.0",
+    "sinon-stub-promise": "^4.0.0"
   }
 }
