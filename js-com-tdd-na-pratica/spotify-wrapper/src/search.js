@@ -1,8 +1,8 @@
-import { API_URL } from './config';
+import { API_URL, HEADERS } from './config';
 import { toJson } from './util';
 
 const search = (query, type) =>
-  fetch(`${API_URL}/search?q=${query}&type=${type}`).then(toJson);
+  fetch(`${API_URL}/search?q=${query}&type=${type}`, HEADERS).then(toJson);
 const searchArtists = (query) => search(query, 'artist');
 const searchAlbums = (query) => search(query, 'album');
 const searchTracks = (query) => search(query, 'track');
