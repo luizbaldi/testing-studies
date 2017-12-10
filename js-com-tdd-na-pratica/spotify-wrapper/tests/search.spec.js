@@ -7,7 +7,7 @@ sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
-import { search, searchAlbums, searchArtists, searchTracks, searchPlaylists } from '../src/main';
+import { search, searchAlbums, searchArtists, searchTracks, searchPlaylists } from '../src/search';
 
 describe('Spotify Wrapper', () => {
   let fetchedStub;
