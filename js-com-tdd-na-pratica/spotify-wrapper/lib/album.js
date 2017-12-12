@@ -1,20 +1,18 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAlbumTracks = exports.getAlbum = undefined;
+exports.default = album;
+function album() {
+  var _this = this;
 
-var _config = require('./config');
-
-var _util = require('./util');
-
-var getAlbum = function getAlbum(url) {
-  return fetch(_config.API_URL + '/albums/' + url).then(_util.toJson);
-};
-var getAlbumTracks = function getAlbumTracks(url) {
-  return fetch(_config.API_URL + '/albums/' + url + '/tracks').then(_util.toJson);
-};
-
-exports.getAlbum = getAlbum;
-exports.getAlbumTracks = getAlbumTracks;
+  return {
+    getAlbum: function getAlbum(id) {
+      return _this.request(_this.apiURL + "/albums/" + id);
+    },
+    getAlbumTracks: function getAlbumTracks(id) {
+      return _this.request(_this.apiURL + "/albums/" + id + "/tracks");
+    }
+  };
+}

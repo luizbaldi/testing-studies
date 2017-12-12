@@ -7,13 +7,17 @@ sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
-import { search, searchAlbums, searchArtists, searchTracks, searchPlaylists } from '../src/search';
+import SpotifyWrapper from '../src/index';
 
 describe('Spotify Wrapper', () => {
+  let spotify;
   let fetchedStub;
   let fetchedPromise;
 
   beforeEach(() => {
+    spotify = new SpotifyWrapper({
+      token: 'token'
+    });
     fetchedStub = sinon.stub(global, 'fetch');
     fetchedPromise = fetchedStub.returnsPromise();
   });
@@ -23,112 +27,79 @@ describe('Spotify Wrapper', () => {
   });
 
   describe('smoke tests', () => {
-    it('should exist the search method', () => {
-      expect(search).to.exist;
-    });
-
     it('should exist the searchAlbums method', () => {
-      expect(searchAlbums).to.exist;
+      expect(spotify.search.albums).to.exist;
     });
 
     it('should exist the searchArtists method', () => {
-      expect(searchArtists).to.exist;
+      expect(spotify.search.artists).to.exist;
     });
 
     it('should exist the searchTracks method', () => {
-      expect(searchTracks).to.exist;
+      expect(spotify.search.tracks).to.exist;
     });
 
     it('should exist the searchPlaylists method', () => {
-      expect(searchPlaylists).to.exist;
-    });
-  });
-
-  describe('generic search', () => {
-    it('should call fetch function', () => {
-      const artists = search();
-      expect(fetchedStub).to.have.been.calledOnce;
-    });
-
-    it('should the correct url to fetch', () => {
-      context('passing one type', () => {
-        const artists = search('BonIver', 'artist');
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=BonIver&type=artist');
-
-        const albums = search('Cocoon', 'album');
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Cocoon&type=album')
-      });
-
-      context('passing more than one type', () => {
-        const artistsAndAlbums = search('BonIver', ['artist', 'album']);
-        expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=BonIver&type=artist,album');
-      });
-    });
-
-    it('should return the JSON data from the promise', () => {
-      fetchedPromise.resolves({ body: 'json' });
-      const artists = search('BonIver', 'BonIver');
-
-      expect(artists.resolveValue).to.be.eql({ body: 'json' });
+      expect(spotify.search.playlists).to.exist;
     });
   });
 
   describe('search artists', () => {
     it('should call fetch function', () => {
-      searchArtists('BonIver');
+      spotify.search.artists('BonIver');
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call a fetch with the correct url', () => {
-      searchArtists('BonIver');
+      spotify.search.artists('BonIver');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=BonIver&type=artist');
 
-      searchArtists('Djonga');
+      spotify.search.artists('Djonga');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Djonga&type=artist');
     });
   });
 
   describe('search albums', () => {
     it('should call fetch function', () => {
-      searchAlbums('BonIver');
+      spotify.search.albums('BonIver');
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call a fetch with the correct url', () => {
-      searchAlbums('BonIver');
+      spotify.search.albums('BonIver');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=BonIver&type=album');
 
-      searchAlbums('SantaCeia');
+      spotify.search.albums('SantaCeia');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=SantaCeia&type=album');
     });
   });
 
   describe('search tracks', () => {
     it('should call fetch function', () => {
-      searchTracks('SkinnyLove');
+      spotify.search.tracks('SkinnyLove');
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call a fetch with the correct url', () => {
-      searchTracks('SkinnyLove');
+      spotify.search.tracks('SkinnyLove');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=SkinnyLove&type=track');
 
-      searchTracks('SantaCeia');
+      spotify.search.tracks('SantaCeia');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=SantaCeia&type=track');
     });
   });
 
   describe('search playlists', () => {
     it('should call fetch function', () => {
-      searchPlaylists('BucketMoments');
+      spotify.search.playlists('BucketMoments');
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call a fetch with the correct url', () => {
-      searchPlaylists('BucketMoments');
+      spotify.search.playlists('BucketMoments');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=BucketMoments&type=playlist');
 
-      searchPlaylists('LofiChillWaves');
+      spotify.search.playlists('LofiChillWaves');
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=LofiChillWaves&type=playlist');
     });
   });

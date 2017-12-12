@@ -1,1 +1,1 @@
-export const toJson = data => json();
+export const toJson = data => data.json();
