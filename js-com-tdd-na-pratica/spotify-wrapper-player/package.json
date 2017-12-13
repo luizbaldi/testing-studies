@@ -12,7 +12,7 @@
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --open"
   },
   "nyc": {
     "reporter": [
@@ -48,10 +48,15 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.6.1",
     "husky": "^0.11.9",
+    "jsdom": "^11.5.1",
+    "jsdom-global": "^3.0.2",
     "mocha": "^3.2.0",
     "nyc": "^10.2.0",
     "rimraf": "^2.6.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "spotify-wrapper": "^2.0.2"
   }
 }
