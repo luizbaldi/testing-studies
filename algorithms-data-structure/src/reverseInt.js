@@ -8,6 +8,12 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-const reverseInt = () => {}
+const reverseInt = (num) => {
+  const isNegative = Math.sign(num) === -1;
+  num = num.toString();
+  return isNegative ? -parseInt(reverseString(num.slice(1, num.length))) : parseInt(reverseString(num));
+};
+
+const reverseString = (str) => str.split('').reverse().join('');
 
 export default reverseInt;

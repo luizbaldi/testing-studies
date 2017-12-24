@@ -6,11 +6,11 @@ describe('Reverse String', () => {
     expect(reverse).to.exist;
   });
 
-  it('should reverse the string \'abcd', () => {
+  it('should reverse the string \'abcd\'', () => {
     expect(reverse('abcd')).to.be.equal('dcba');
   });
 
-  it('should reverse the string \'potatoe', () => {
+  it('should reverse the string \'potatoe\'', () => {
     expect(reverse('potatoe')).to.be.equal('eotatop');
   });
 });
