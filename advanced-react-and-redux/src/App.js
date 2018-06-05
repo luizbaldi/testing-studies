@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+
+/* Comments */
+import CommentBox from './components/CommentBox'
+import CommentList from './components/CommentList'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h2>Hallo!</h2>
-      </div>
+      <Fragment>
+        <CommentBox />
+        <CommentList />
+      </Fragment>
     );
   }
 }
