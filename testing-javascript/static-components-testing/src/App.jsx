@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
+import NumberInput from './components/NumberInput'
 
 const App = () => (
   <div>
-    <span>Potatoe</span>
+    <NumberInput />
   </div>
 )
 
